@@ -17,21 +17,21 @@ const SPEAKERS = [
     },
     {
         "name": "Hero #2",
-        "image": "silhouette.png",
+        "image": "PASE.png",
         "role": "REVEALING SOON",
         "bio": "A mysterious hero joins the signal!",
         "linkedin": "#"
     },
     {
         "name": "Hero #3",
-        "image": "silhouette.png",
+        "image": "PASE.png",
         "role": "REVEALING SOON",
         "bio": "The power is growing...",
         "linkedin": "#"
     },
     {
         "name": "Hero #4",
-        "image": "silhouette.png",
+        "image": "PASE.png",
         "role": "REVEALING SOON",
         "bio": "Final recruitment in progress.",
         "linkedin": "#"
