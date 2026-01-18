@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIGNAL 4.0 | MARVELOUS TECH EVENT</title>
+    <title>SIGNAL 4.0</title>
+    <link rel="icon" href="/hehelog.png" type="image/png">
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/7f29f2f6b9.js" crossorigin="anonymous"></script>
     <script src="data.js"></script>
 </head>
 
@@ -35,7 +37,7 @@
                 <div class="main-logo-container">
                     <img src="signallog.png" alt="SIGNAL 4.0" class="main-logo">
                     <div
-                        style="position: absolute; bottom: -20px; right: 0; background: var(--primary-yellow); color: #000; padding: 10px; font-family: 'Luckiest Guy'; border: 3px solid #000; transform: rotate(5deg); font-size: 1.5rem;">
+                        style="position: absolute; bottom: 0; right: 0; background: var(--primary-yellow); color: #000; padding: 10px; font-family: 'Luckiest Guy'; border: 3px solid #000; transform: rotate(5deg) translate(20px, 20px); font-size: 1.5rem;">
                         FEB 20-22, 2026!
                     </div>
                 </div>
@@ -43,8 +45,9 @@
                 <div class="comic-panel" id="about">
                     <p style="font-size: 1.2rem; line-height: 1.6; font-weight: 700;">
                         <strong>SIGNAL 4.0</strong>, the flagship event of the <strong>IEEE SPS Kerala Chapter</strong>,
-                        bursts onto the scene with more energy than a supernova! This fourth edition is your portal to a
-                        universe of technology, inspiration, and hero-level collaboration.
+                        is back with greater energy and excitement! Scheduled to take place on February 20, 21, and 22,
+                        2026, this fourth edition promises to be a remarkable blend of technology, inspiration, and
+                        collaboration.
                     </p>
                     <a href="https://thepase.ceal.in" target="_blank" style="text-decoration: none;"><button
                             class="pow-btn">REGISTER NOW!</button></a>
@@ -52,11 +55,11 @@
 
                 <div style="display: flex; justify-content: center; gap: 20px; margin-top: 30px;">
                     <button class="action-label"
-                        style="background: var(--primary-blue); color: white; border: 3px solid #000; cursor: pointer; padding: 10px 20px;"
-                        onclick="openModal('spsModal')">ABOUT SPS KERALA</button>
+                        style="background: var(--primary-blue); color: white; border: 3px solid #000; cursor: pointer;font-size: 1.2rem; padding: 20px 30px;"
+                        onclick="openModal('spsModal')">ABOUT SPS KERALA CHAPTER</button>
                     <button class="action-label"
-                        style="background: var(--primary-red); color: white; border: 3px solid #000; cursor: pointer; padding: 10px 20px;"
-                        onclick="openModal('hostModal')">EVENT HOST</button>
+                        style="background: var(--primary-red); color: white; border: 3px solid #000; cursor: pointer;font-size: 1.2rem; padding: 20px 30px;"
+                        onclick="openModal('hostModal')">IEEE SB TKMCE</button>
                 </div>
             </div>
         </section>
@@ -237,7 +240,7 @@
                 speakersContainer.innerHTML = SPEAKERS.map((s, i) => `
                     <div class="speaker-card" style="transform: rotate(${i % 2 === 0 ? '1' : '-2'}deg); opacity: 1; margin: 10px;">
                         <div class="speaker-img-wrapper">
-                            <img src="speakers/${s.image}" alt="${s.name}" onerror="this.src='https://via.placeholder.com/200?text=Hero'">
+                            <img src="speakers/${s.image}" alt="${s.name}" onerror="this.src='/placeholder.jpg'">
                         </div>
                         <h3 class="speaker-name">${s.name}</h3>
                         <p class="speaker-role">${s.role}</p>
@@ -287,7 +290,7 @@
             observer.observe(panel);
         });
         // Countdown Logic
-        const targetDate = new Date("February 22, 2026 00:00:00").getTime();
+        const targetDate = new Date("February 20, 2026 00:00:00").getTime();
 
         function updateCountdown() {
             const now = new Date().getTime();
