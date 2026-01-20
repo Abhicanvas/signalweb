@@ -132,6 +132,7 @@ header {
 .sps-logo {
   height: 60px;
   z-index: 1001;
+  padding-left: 20px;
 }
 
 nav {
@@ -211,7 +212,7 @@ nav {
 .main-logo {
   max-width: 600px;
   width: 90%;
-  filter: drop-shadow(8px 8px 0px #000);
+  filter: drop-shadow(6px 6px 0px #000);
   animation: pop-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
