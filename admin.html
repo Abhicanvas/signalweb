@@ -1,134 +1,354 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Panel | Hero Management</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <style>
-        .admin-form {
-            background: white;
-            padding: 30px;
-            border: var(--comic-border);
-            color: black;
-            box-shadow: 10px 10px 0 #000;
-            max-width: 600px;
-            margin: 50px auto;
-        }
+      .admin-form {
+        background: white;
+        padding: 30px;
+        border: var(--comic-border);
+        color: black;
+        box-shadow: 10px 10px 0 #000;
+        max-width: 600px;
+        margin: 50px auto;
+      }
 
-        input,
-        textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 3px solid #000;
-            font-family: 'Inter', sans-serif;
-            font-weight: bold;
-        }
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 3px solid #000;
+        font-family: "Inter", sans-serif;
+        font-weight: bold;
+      }
 
-        label {
-            font-family: 'Bangers';
-            font-size: 1.2rem;
-        }
+      label {
+        font-family: "Bangers";
+        font-size: 1.2rem;
+      }
     </style>
-</head>
+  </head>
 
-<body style="background: var(--bg-dark); color: white;">
+  <body style="background: var(--bg-dark); color: white">
     <div class="action-bg"></div>
     <div class="action-lines"></div>
     <div class="halftone-overlay"></div>
 
     <header
-        style="background: var(--primary-yellow); border-bottom: var(--comic-border); padding: 20px 0; transform: skewY(-1deg);">
-        <div class="container" style="transform: skewY(1deg);">
-            <h1 class="comic-text" style="color: black; margin: 0;">HERO HEADQUARTERS</h1>
-        </div>
+      style="
+        background: var(--primary-yellow);
+        border-bottom: var(--comic-border);
+        padding: 20px 0;
+        transform: skewY(-1deg);
+      "
+    >
+      <div class="container" style="transform: skewY(1deg)">
+        <h1 class="comic-text" style="color: black; margin: 0">
+          HERO HEADQUARTERS
+        </h1>
+      </div>
     </header>
 
-
     <main class="container">
-        <div class="admin-form">
-            <h2 class="comic-text">HERO RECRUITMENT TOOL</h2>
-            <p style="font-weight: bold; margin-bottom: 20px; color: var(--primary-red);">NO SERVER MODE: Follow these
-                steps manually!</p>
+      <div class="admin-form">
+        <h2 class="comic-text">HERO RECRUITMENT TOOL</h2>
+        <p
+          style="
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+          "
+        >
+          LOCALSTORAGE MODE: Add heroes dynamically!
+        </p>
 
-            <div style="background: #f0f0f0; padding: 15px; border: 2px solid #000; margin-bottom: 30px;">
-                <label>STEP 1: SELECT PHOTO (FOR PREVIEW ONLY)</label>
-                <input type="file" id="photoInput" accept="image/*" onchange="previewPhoto()">
-                <div id="photoPreview"
-                    style="width: 150px; height: 150px; border: 3px solid #000; margin: 10px 0; background: #ddd; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                    <span style="font-size: 0.8rem; color: #666;">PREVIEW</span>
-                </div>
-            </div>
-
-            <label>STEP 2: ENTER HERO DETAILS</label>
-            <input type="text" id="nameInput" placeholder="Name (e.g. Tony Stark)" oninput="updateGenerator()">
-            <input type="text" id="roleInput" placeholder="Superpower (e.g. AI Genius)" oninput="updateGenerator()">
-            <textarea id="bioInput" placeholder="Origin Story / Bio" oninput="updateGenerator()"></textarea>
-            <input type="text" id="linkedinInput" placeholder="LinkedIn URL" oninput="updateGenerator()">
-
-            <div style="margin-top: 30px; background: #fff9c4; padding: 20px; border: 3px solid #000;">
-                <h3 class="comic-text" style="font-size: 1.2rem; color: var(--primary-blue);">MISSION INSTRUCTIONS:</h3>
-                <ol style="margin-left: 20px; font-weight: bold; line-height: 1.4;">
-                    <li>Save your image in <code style="background: white; padding: 2px;">speakers/</code> as:<br>
-                        <span id="filenameOutput"
-                            style="color: var(--primary-red); font-size: 1.2rem;">Pending...</span>
-                    </li>
-                    <li style="margin-top: 10px;">Copy this code and paste it into <code
-                            style="background: white; padding: 2px;">data.js</code>:</li>
-                </ol>
-                <textarea id="codeOutput" readonly
-                    style="height: 150px; font-family: monospace; font-size: 0.8rem; margin-top: 10px;"></textarea>
-                <button class="pow-btn" style="width: 100%; margin-top: 10px; font-size: 1rem;"
-                    onclick="copyCode()">COPY CODE!</button>
-            </div>
+        <div
+          style="
+            background: #f0f0f0;
+            padding: 15px;
+            border: 2px solid #000;
+            margin-bottom: 30px;
+          "
+        >
+          <label>STEP 1: SELECT PHOTO (Save to speakers/ folder)</label>
+          <input
+            type="file"
+            id="photoInput"
+            accept="image/*"
+            onchange="previewPhoto()"
+          />
+          <div
+            id="photoPreview"
+            style="
+              width: 150px;
+              height: 150px;
+              border: 3px solid #000;
+              margin: 10px 0;
+              background: #ddd;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              overflow: hidden;
+            "
+          >
+            <span style="font-size: 0.8rem; color: #666">PREVIEW</span>
+          </div>
         </div>
+
+        <label>STEP 2: ENTER HERO DETAILS</label>
+        <input
+          type="text"
+          id="nameInput"
+          placeholder="Name (e.g. Tony Stark)"
+        />
+        <input
+          type="text"
+          id="roleInput"
+          placeholder="Superpower (e.g. AI Genius)"
+        />
+        <textarea id="bioInput" placeholder="Origin Story / Bio"></textarea>
+        <input type="text" id="linkedinInput" placeholder="LinkedIn URL" />
+
+        <div style="margin-top: 30px; display: flex; gap: 10px">
+          <button
+            class="pow-btn"
+            style="flex: 1; font-size: 1rem"
+            onclick="addHero()"
+          >
+            ADD HERO!
+          </button>
+          <button
+            class="action-label"
+            style="
+              flex: 1;
+              font-size: 1rem;
+              background: var(--primary-red);
+              color: white;
+            "
+            onclick="resetForm()"
+          >
+            RESET FORM
+          </button>
+        </div>
+
+        <div
+          style="
+            margin-top: 30px;
+            background: #e8f5e9;
+            padding: 20px;
+            border: 3px solid #000;
+          "
+        >
+          <h3
+            class="comic-text"
+            style="font-size: 1.2rem; color: var(--primary-blue)"
+          >
+            INSTRUCTIONS:
+          </h3>
+          <ol style="margin-left: 20px; font-weight: bold; line-height: 1.8">
+            <li>
+              Save your hero's image in the
+              <code style="background: white; padding: 2px">speakers/</code>
+              folder with the suggested filename.
+            </li>
+            <li>Fill in the hero details above.</li>
+            <li>Click "ADD HERO!" to save to localStorage.</li>
+            <li>Refresh the main page to see your new hero!</li>
+          </ol>
+          <div
+            style="
+              margin-top: 15px;
+              padding: 10px;
+              background: white;
+              border: 2px solid #000;
+            "
+          >
+            <strong>Suggested Filename:</strong>
+            <span id="filenameOutput" style="color: var(--primary-red)"
+              >Enter name first...</span
+            >
+          </div>
+        </div>
+
+        <div
+          style="
+            margin-top: 30px;
+            background: #fff9c4;
+            padding: 20px;
+            border: 3px solid #000;
+          "
+        >
+          <h3
+            class="comic-text"
+            style="font-size: 1.2rem; color: var(--primary-red)"
+          >
+            MANAGE HEROES
+          </h3>
+          <div id="heroList" style="margin-top: 15px"></div>
+          <button
+            class="action-label"
+            style="
+              width: 100%;
+              margin-top: 15px;
+              background: var(--primary-red);
+              color: white;
+            "
+            onclick="resetToDefaults()"
+          >
+            RESET TO DEFAULTS
+          </button>
+        </div>
+      </div>
     </main>
 
+    <script src="data.js"></script>
     <script>
-        function previewPhoto() {
-            const file = document.getElementById('photoInput').files[0];
-            const preview = document.getElementById('photoPreview');
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    preview.innerHTML = `<img src="${e.target.result}" style="width: 100%; height: 100%; object-fit: cover;">`;
-                }
-                reader.readAsDataURL(file);
-            }
+      function previewPhoto() {
+        const file = document.getElementById("photoInput").files[0];
+        const preview = document.getElementById("photoPreview");
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            preview.innerHTML = `<img src="${e.target.result}" style="width: 100%; height: 100%; object-fit: cover;">`;
+          };
+          reader.readAsDataURL(file);
+        }
+        updateFilename();
+      }
+
+      function updateFilename() {
+        const name = document.getElementById("nameInput").value.trim();
+        if (name) {
+          const filename =
+            name
+              .split(/\s+/)
+              .map(
+                (word) =>
+                  word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
+              )
+              .join("_") + ".png";
+          document.getElementById("filenameOutput").innerText = filename;
+        } else {
+          document.getElementById("filenameOutput").innerText =
+            "Enter name first...";
+        }
+      }
+
+      document
+        .getElementById("nameInput")
+        .addEventListener("input", updateFilename);
+
+      function addHero() {
+        const name = document.getElementById("nameInput").value.trim();
+        const role =
+          document.getElementById("roleInput").value.trim() || "SPEAKER";
+        const bio = document.getElementById("bioInput").value.trim() || "";
+        const linkedin =
+          document.getElementById("linkedinInput").value.trim() || "#";
+
+        if (!name) {
+          alert("⚠️ Please enter a hero name!");
+          return;
         }
 
-        function updateGenerator() {
-            const name = document.getElementById('nameInput').value || "Unnamed Hero";
-            const role = document.getElementById('roleInput').value || "SPEAKER";
-            const bio = document.getElementById('bioInput').value || "";
-            const linkedin = document.getElementById('linkedinInput').value || "#";
+        const filename =
+          name
+            .split(/\s+/)
+            .map(
+              (word) =>
+                word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
+            )
+            .join("_") + ".png";
 
-            const filename = name.trim().split(/\s+/).map(word =>
-                word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-            ).join('_') + '.png';
+        const newSpeaker = {
+          name: name,
+          image: filename,
+          role: role,
+          bio: bio,
+          linkedin: linkedin,
+        };
 
-            document.getElementById('filenameOutput').innerText = filename;
+        if (StorageManager.addSpeaker(newSpeaker)) {
+          alert(
+            "✅ HERO ADDED! Remember to save the image as: " +
+              filename +
+              " in the speakers/ folder.\n\nRefresh the main page to see your hero!",
+          );
+          resetForm();
+          loadHeroList();
+        } else {
+          alert("❌ Error saving hero. Please try again.");
+        }
+      }
 
-            const speakerObj = {
-                name: name,
-                image: filename,
-                role: role,
-                bio: bio,
-                linkedin: linkedin
-            };
+      function resetForm() {
+        document.getElementById("nameInput").value = "";
+        document.getElementById("roleInput").value = "";
+        document.getElementById("bioInput").value = "";
+        document.getElementById("linkedinInput").value = "";
+        document.getElementById("photoPreview").innerHTML =
+          '<span style="font-size: 0.8rem; color: #666;">PREVIEW</span>';
+        document.getElementById("filenameOutput").innerText =
+          "Enter name first...";
+      }
 
-            document.getElementById('codeOutput').value = JSON.stringify(speakerObj, null, 2) + ",";
+      function deleteHero(id) {
+        if (confirm("Are you sure you want to remove this hero?")) {
+          if (StorageManager.deleteSpeaker(id)) {
+            alert("✅ Hero removed!");
+            loadHeroList();
+          } else {
+            alert("❌ Error removing hero.");
+          }
+        }
+      }
+
+      function loadHeroList() {
+        const heroes = StorageManager.getSpeakers();
+        const listContainer = document.getElementById("heroList");
+
+        if (heroes.length === 0) {
+          listContainer.innerHTML =
+            '<p style="text-align: center; color: #666;">No heroes yet. Add one above!</p>';
+          return;
         }
 
-        function copyCode() {
-            const codeOutput = document.getElementById('codeOutput');
-            codeOutput.select();
-            document.execCommand('copy');
-            alert("CODE COPIED! Now paste it into data.js inside the SPEAKERS array.");
+        listContainer.innerHTML = heroes
+          .map(
+            (hero, index) => `
+                <div style="background: white; padding: 15px; margin-bottom: 10px; border: 2px solid #000; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <strong style="font-size: 1.1rem;">${hero.name}</strong>
+                        <p style="margin: 5px 0; color: #666;">${hero.role}</p>
+                        <small style="color: #999;">Image: ${hero.image}</small>
+                    </div>
+                    <button class="action-label" style="background: var(--primary-red); color: white; padding: 10px 20px;" onclick="deleteHero(${hero.id})">
+                        DELETE
+                    </button>
+                </div>
+            `,
+          )
+          .join("");
+      }
+
+      function resetToDefaults() {
+        if (
+          confirm(
+            "⚠️ This will delete all custom heroes and restore defaults. Continue?",
+          )
+        ) {
+          StorageManager.resetToDefaults();
+          alert("✅ Reset complete! Refresh the page to see default heroes.");
+          loadHeroList();
         }
+      }
+
+      // Load hero list on page load
+      document.addEventListener("DOMContentLoaded", loadHeroList);
     </script>
-</body>
-
+  </body>
 </html>
