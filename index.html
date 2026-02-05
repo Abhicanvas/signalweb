@@ -193,22 +193,177 @@
         </div>
       </section> -->
 
-      <!--<section class="comic-panel" id="programs"
-            style="margin: 100px auto; transform: rotate(-1deg); background: var(--primary-blue); color: white;">
-            <h2 class="comic-text" style="font-size: 3rem; margin-bottom: 20px;">TOP SECRET MISSIONS</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left;">
-                <div
-                    style="background: rgba(255,255,255,0.1); padding: 15px; border-left: 10px solid var(--primary-yellow);">
-                    <h3 class="action-label">Workshop A</h3>
-                    <p>Master the arts of Signal Processing.</p>
-                </div>
-                <div
-                    style="background: rgba(255,255,255,0.1); padding: 15px; border-left: 10px solid var(--primary-red);">
-                    <h3 class="action-label">Hackathon</h3>
-                    <p>48 Hours of non-stop action!</p>
-                </div>
+      <section id="programs" style="margin: 80px 0; position: relative;">
+        <div class="container">
+          <h2
+            class="section-title"
+            style="
+              color: var(--primary-yellow);
+              text-align: center;
+              margin-bottom: 50px;
+            "
+          >
+            WORKSHOP PROGRAMS
+          </h2>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+              gap: 40px;
+              max-width: 1000px;
+              margin: 0 auto;
+            "
+          >
+            <!-- Drone Expo Workshop -->
+            <div
+              class="comic-panel"
+              style="
+                background: var(--primary-blue);
+                color: white;
+                padding: 0;
+                transform: rotate(-2deg);
+                position: relative;
+                overflow: hidden;
+                cursor: pointer;
+              "
+            >
+              <img 
+                src="workshops/DroneExpo.jpeg" 
+                alt="Drone Expo Workshop"
+                style="
+                  width: 100%;
+                  height: auto;
+                  display: block;
+                  transition: transform 0.3s ease;
+                "
+              />
+              <div style="
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: linear-gradient(transparent, rgba(0,0,0,0.9));
+                padding: 30px 20px 20px 20px;
+                transform: translateY(100%);
+                transition: transform 0.3s ease;
+              " class="workshop-overlay">
+                <h3
+                  class="action-label"
+                  style="
+                    font-size: 1.5rem; 
+                    margin-bottom: 10px; 
+                    color: var(--primary-yellow);
+                  "
+                >
+                  DRONE EXPO
+                </h3>
+                <p style="
+                  font-weight: 600;
+                  line-height: 1.5;
+                  margin: 0;
+                  color: white;
+                ">
+                  Explore the future of unmanned aerial vehicles and drone technology. 
+                  Hands-on experience with cutting-edge drone systems and applications.
+                </p>
+              </div>
             </div>
-        </section> -->
+
+            <!-- Intro to Computer Vision Workshop -->
+            <div
+              class="comic-panel"
+              style="
+                background: var(--primary-red);
+                color: white;
+                padding: 0;
+                transform: rotate(1.5deg);
+                position: relative;
+                overflow: hidden;
+                cursor: pointer;
+              "
+            >
+              <img 
+                src="workshops/introToCV.jpeg" 
+                alt="Introduction to Computer Vision Workshop"
+                style="
+                  width: 100%;
+                  height: auto;
+                  display: block;
+                  transition: transform 0.3s ease;
+                "
+              />
+              <div style="
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: linear-gradient(transparent, rgba(0,0,0,0.9));
+                padding: 30px 20px 20px 20px;
+                transform: translateY(100%);
+                transition: transform 0.3s ease;
+              " class="workshop-overlay">
+                <h3
+                  class="action-label"
+                  style="
+                    font-size: 1.5rem; 
+                    margin-bottom: 10px; 
+                    color: var(--primary-yellow);
+                  "
+                >
+                  INTRO TO COMPUTER VISION
+                </h3>
+                <p style="
+                  font-weight: 600;
+                  line-height: 1.5;
+                  margin: 0;
+                  color: white;
+                ">
+                  Dive into the world of computer vision and image processing. 
+                  Learn fundamentals and practical applications in real-world scenarios.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Workshop Features -->
+          <!-- <div
+            class="comic-panel"
+            style="
+              background: var(--primary-yellow);
+              color: #000;
+              padding: 30px;
+              margin-top: 50px;
+              max-width: 800px;
+              margin-left: auto;
+              margin-right: auto;
+              text-align: center;
+            "
+          >
+            <h3
+              style="
+                font-family: 'Luckiest Guy', cursive;
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+              "
+            >
+              🎯 WORKSHOP HIGHLIGHTS
+            </h3>
+            <div style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+              gap: 20px;
+              text-align: center;
+              font-weight: 700;
+            ">
+              <div>✓ Expert Instructors</div>
+              <div>✓ Hands-on Learning</div>
+              <div>✓ Industry Projects</div>
+              <div>✓ Certificate of Completion</div>
+            </div>
+          </div>
+        </div> -->
+      </section>
 
       <section
         class="comic-panel"
@@ -793,6 +948,20 @@
             )
             .join("");
           galleryTrack.innerHTML = filesFormatted;
+        }
+      });
+
+      // Workshop hover effects
+      const workshopCards = document.querySelectorAll('#programs .comic-panel');
+      workshopCards.forEach(card => {
+        const overlay = card.querySelector('.workshop-overlay');
+        if (overlay) {
+          card.addEventListener('mouseenter', () => {
+            overlay.style.transform = 'translateY(0)';
+          });
+          card.addEventListener('mouseleave', () => {
+            overlay.style.transform = 'translateY(100%)';
+          });
         }
       });
 
